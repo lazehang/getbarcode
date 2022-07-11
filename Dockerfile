@@ -6,7 +6,7 @@ EXPOSE 4001
 
 FROM base as production
 ENV NODE_ENV=production
-RUN npm ci
+RUN npm install
 COPY . /
 CMD ["node", "bin/www"]
 
