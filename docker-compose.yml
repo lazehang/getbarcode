@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: ./
+      target: production
+    volumes:
+      - .:/src
+    command: npm run start
+    ports:
+      - "4001:4001"
+    environment:
+      NODE_ENV: production
