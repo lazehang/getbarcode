@@ -1,7 +1,7 @@
 # getbarcode
 [JsBarcode](https://github.com/lindell/JsBarcode#readme) online generator.
 
-[Demo](https://barcode.lazehang.com/generate/getbarcode?height=30)
+[Demo](https://barcode.lazehang.com)
 
 ## Generate endpoint
 
