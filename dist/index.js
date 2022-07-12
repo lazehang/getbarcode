@@ -15,13 +15,15 @@ app.engine('handlebars', (0, express_handlebars_1.engine)());
 app.set('views', './templates');
 app.use(express_1.default.static('public'));
 app.use((0, cors_1.default)());
-app.get('/generate/:code', async (req, res, next) => {
+app.get('/', (req, res) => {
+    return res.render('index');
+});
+app.get('generate/:code', async (req, res, next) => {
     var _a;
     const cacheKey = `barcode_${req.params.code}_${((_a = req.query) === null || _a === void 0 ? void 0 : _a.height) || '0'}`;
     const cache = await (0, cache_1.default)();
     const cachedData = await cache.get(cacheKey);
     if (cachedData) {
-        console.log('got cached data');
         return res.sendFile(cachedData, {
             root: __dirname + '/../public',
         });

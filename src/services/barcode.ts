@@ -1,19 +1,17 @@
 import JsBarcode from 'jsbarcode';
 import fs from 'fs';
+import { DOMImplementation, XMLSerializer } from 'xmldom';
 
 export default {
-  handle(
-    value: string,
-    options: JsBarcode.Options | null = {},
-    fileName: string = ''
-  ) {
-    const { DOMImplementation, XMLSerializer } = require('xmldom');
+  handle(value: string, options?: JsBarcode.Options, fileName: string = '') {
     const xmlSerializer = new XMLSerializer();
+
     const document = new DOMImplementation().createDocument(
       'http://www.w3.org/1999/xhtml',
       'html',
       null
     );
+
     const svgNode = document.createElementNS(
       'http://www.w3.org/2000/svg',
       'svg'
@@ -21,7 +19,6 @@ export default {
 
     JsBarcode(svgNode, value, {
       xmlDocument: document,
-      ...options,
     });
 
     const svgText = xmlSerializer.serializeToString(svgNode);

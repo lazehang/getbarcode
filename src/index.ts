@@ -18,12 +18,15 @@ app.use(express.static('public'));
 
 app.use(cors());
 
-app.get('/generate/:code', async (req, res, next) => {
+app.get('/', (req, res) => {
+  return res.render('index');
+});
+
+app.get('generate/:code', async (req, res, next) => {
   const cacheKey = `barcode_${req.params.code}_${req.query?.height || '0'}`;
   const cache = await client();
   const cachedData = await cache.get(cacheKey);
   if (cachedData) {
-    console.log('got cached data');
     return res.sendFile(cachedData, {
       root: __dirname + '/../public',
     });
