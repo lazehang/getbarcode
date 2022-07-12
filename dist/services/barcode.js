@@ -11,9 +11,7 @@ exports.default = {
         const xmlSerializer = new xmldom_1.XMLSerializer();
         const document = new xmldom_1.DOMImplementation().createDocument('http://www.w3.org/1999/xhtml', 'html', null);
         const svgNode = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        (0, jsbarcode_1.default)(svgNode, value, {
-            xmlDocument: document,
-        });
+        (0, jsbarcode_1.default)(svgNode, value, Object.assign({ xmlDocument: document }, options));
         const svgText = xmlSerializer.serializeToString(svgNode);
         const root = __dirname + '/../../public/';
         const filename = 'svgs/' + fileName + '.svg';

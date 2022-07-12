@@ -19,6 +19,7 @@ export default {
 
     JsBarcode(svgNode, value, {
       xmlDocument: document,
+      ...options,
     });
 
     const svgText = xmlSerializer.serializeToString(svgNode);
