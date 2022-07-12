@@ -6,7 +6,7 @@ EXPOSE 4001
 
 FROM base as production
 ENV NODE_ENV=production
-RUN npm install
+RUN npm ci
 RUN npm install -g typescript
 RUN npm install -g ts-node
 COPY . /
