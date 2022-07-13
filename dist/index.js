@@ -18,7 +18,7 @@ app.use((0, cors_1.default)());
 app.get('/', (req, res) => {
     return res.render('index');
 });
-app.get('generate/:code', async (req, res, next) => {
+app.get('/generate/:code', async (req, res) => {
     var _a;
     const cacheKey = `barcode_${req.params.code}_${((_a = req.query) === null || _a === void 0 ? void 0 : _a.height) || '0'}`;
     const cache = await (0, cache_1.default)();
