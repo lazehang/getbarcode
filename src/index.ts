@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
   return res.render('index');
 });
 
-app.get('generate/:code', async (req, res, next) => {
+app.get('/generate/:code', async (req, res) => {
   const cacheKey = `barcode_${req.params.code}_${req.query?.height || '0'}`;
   const cache = await client();
   const cachedData = await cache.get(cacheKey);
@@ -33,6 +33,7 @@ app.get('generate/:code', async (req, res, next) => {
   }
 
   const fileName = barcode.handle(req.params.code, req.query, cacheKey);
+
   await cache.set(cacheKey, fileName);
 
   res.sendFile(fileName, {
