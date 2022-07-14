@@ -21,7 +21,7 @@ export default {
 
     JsBarcode(svgNode, value, {
       xmlDocument: document,
-      ...getOptions(options),
+      ...options,
     });
 
     const svgText = xmlSerializer.serializeToString(svgNode);
@@ -35,25 +35,22 @@ export default {
   },
 };
 
-const getOptions = (options: object | null = {}): JsBarcode.Options => {
-  return options ? options : {};
-  // return {
-  //   format: 'pharmacode',
-  //   width: 2,
-  //   height: 40,
-  //   displayValue: false,
-  //   text: 'BJS',
-  //   fontOptions: '',
-  //   textAlign: 'center',
-  //   textPosition: 'bottom',
-  //   textMargin: 2,
-  //   fontSize: 12,
-  //   background: '#fff',
-  //   lineColor: '#000',
-  //   margin: 0,
-  //   marginTop: 0,
-  //   marginBottom: 0,
-  //   marginLeft: 0,
-  //   marginRight: 0,
-  // };
-};
+export const optionKeys: string[] = [
+  'format',
+  'width',
+  'height',
+  'displayValue',
+  'text',
+  'fontOptions',
+  'textAlign',
+  'textPosition',
+  'textMargin',
+  'fontSize',
+  'background',
+  'lineColor',
+  'margin',
+  'marginTop',
+  'marginBottom',
+  'marginLeft',
+  'marginRight',
+];

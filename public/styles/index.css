@@ -7,3 +7,10 @@ body {
 #result img {
   width: 100%;
 }
+.copied-notify {
+  display: none;
+}
+
+.copied-notify.show {
+  display: block;
+}

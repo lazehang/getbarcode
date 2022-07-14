@@ -1,6 +1,7 @@
 import express from 'express';
-import barcode from '../services/barcode';
+import barcode, { optionKeys } from '../services/barcode';
 import client from '../services/cache';
+import { pick } from '../../utils/helpers';
 
 export default function barcodeRoutes() {
   let router = express.Router();
@@ -18,9 +19,17 @@ const get = (req: express.Request, res: express.Response) => {
 
 const generate = async (req: express.Request, res: express.Response) => {
   try {
-    const cacheKey = `barcode_${req.params.code}_${req.query?.height || '0'}`;
+    let cacheKey = `barcode_${req.params.code}`;
+
+    const options = pick(req.query, optionKeys);
+
+    for (const key in options) {
+      cacheKey += `_${key}_${options[key]}`;
+    }
+
     const cache = await client();
     const cachedData = await cache.get(cacheKey);
+
     if (cachedData) {
       return res.sendFile(cachedData, {
         root: __dirname + '/../../public',
@@ -35,6 +44,7 @@ const generate = async (req: express.Request, res: express.Response) => {
       root: __dirname + '/../../public',
     });
   } catch (err) {
+    console.log(err);
     res.status(404).send('Sorry, cant find that');
   }
 };

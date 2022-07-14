@@ -15,7 +15,6 @@ document
     text.value = url;
 
     document.querySelector('#copythis').addEventListener('click', (e) => {
-      e.preventDefault();
       copyToClipboard(url);
     });
 
@@ -30,6 +29,13 @@ function appendImage(el, src) {
   el.appendChild(image);
 }
 
-function copyToClipboard(text) {
-  window.prompt('Copy to clipboard: Ctrl+C, Enter', text);
+function copyToClipboard(text = '') {
+  navigator.clipboard.writeText(text).then(() => notify());
+}
+
+function notify() {
+  const el = document.querySelector('.copied-notify');
+  const closeBtn = el.querySelector('.close');
+  el.classList.add('show');
+  closeBtn.addEventListener('click', () => el.classList.remove('show'));
 }
