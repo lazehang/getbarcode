@@ -1,7 +1,7 @@
 import express from 'express';
 import barcode, { optionKeys } from '../services/barcode';
 import client from '../services/cache';
-import { pick } from '../../utils/helpers';
+import { pick } from '../utils/helpers';
 
 export default function barcodeRoutes() {
   let router = express.Router();

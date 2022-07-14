@@ -12,5 +12,5 @@
   "exclude": [
     "node_modules"
   ],
-  "include": ["src/**/*.ts", "config.ts"]
+  "include": ["src/**/*.ts", "config.ts", "index.ts"],
 }

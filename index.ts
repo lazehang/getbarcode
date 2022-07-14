@@ -12,14 +12,14 @@ const app = express();
 app.use(helmet());
 
 const hbs = create({
-  partialsDir: path.join(__dirname, '../views/partials'),
+  partialsDir: 'partials',
 });
 
-app.engine('hbs', hbs.engine);
+app.set('view engine', 'handlebars');
 
-app.set('view engine', 'hbs');
+app.engine('handlebars', hbs.engine);
 
-app.set('views', path.join(__dirname, '../views/templates'));
+app.set('views', './templates');
 
 app.use(express.static('public'));
 
