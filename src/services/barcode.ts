@@ -4,6 +4,8 @@ import { DOMImplementation, XMLSerializer } from 'xmldom';
 
 export default {
   handle(value: string, options?: JsBarcode.Options, fileName: string = '') {
+    console.log('generating svg for: ' + fileName);
+
     const xmlSerializer = new XMLSerializer();
 
     const document = new DOMImplementation().createDocument(
@@ -19,7 +21,7 @@ export default {
 
     JsBarcode(svgNode, value, {
       xmlDocument: document,
-      ...options,
+      ...getOptions(options),
     });
 
     const svgText = xmlSerializer.serializeToString(svgNode);
@@ -31,4 +33,27 @@ export default {
 
     return filename;
   },
+};
+
+const getOptions = (options: object | null = {}): JsBarcode.Options => {
+  return options ? options : {};
+  // return {
+  //   format: 'pharmacode',
+  //   width: 2,
+  //   height: 40,
+  //   displayValue: false,
+  //   text: 'BJS',
+  //   fontOptions: '',
+  //   textAlign: 'center',
+  //   textPosition: 'bottom',
+  //   textMargin: 2,
+  //   fontSize: 12,
+  //   background: '#fff',
+  //   lineColor: '#000',
+  //   margin: 0,
+  //   marginTop: 0,
+  //   marginBottom: 0,
+  //   marginLeft: 0,
+  //   marginRight: 0,
+  // };
 };
