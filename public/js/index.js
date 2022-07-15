@@ -5,11 +5,14 @@ document
 
     const resultElement = document.getElementById('result');
     const barcodeValue = e.target.elements['barcodeValue'].value || '';
+    const format = e.target.elements['format'].value;
+    const width = e.target.elements['width'].value;
+  
     resultElement.innerHTML = '';
 
     if (!barcodeValue) return;
 
-    const url = `${window.location.protocol}//${window.location.host}/generate/${barcodeValue}`;
+    const url = `${window.location.protocol}//${window.location.host}/generate/${barcodeValue}?format=${format}&width=${width}`;
 
     const text = document.getElementById('result-url');
     text.value = url;

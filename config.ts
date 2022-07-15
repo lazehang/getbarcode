@@ -7,4 +7,5 @@ export default {
     password: process.env.REDIS_PASSWORD,
     username: process.env.REDIS_USERNAME,
   },
+  cacheEnabled: process.env.CACHE_ENABLE || false
 };
