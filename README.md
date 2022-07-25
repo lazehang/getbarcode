@@ -1,11 +1,12 @@
 # getbarcode [WIP]
 [JsBarcode](https://github.com/lindell/JsBarcode#readme) online generator.
 
-[Demo](https://barcode.lazehang.com)
+[Demo](https://getbarcode.vercel.app/)
 
 ## Generate endpoint
 
 ### endpoint: generate/:value
+[https://barcode.lazehang.com/generate/code](https://barcode.lazehang.com/generate/code)
 
 params:
 - value
