@@ -8,7 +8,13 @@ const PORT = process.env.PORT || 4001;
 
 const app = express();
 
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginResourcePolicy: {
+      policy: 'cross-origin',
+    },
+  })
+);
 
 const hbs = create({
   partialsDir: 'partials',

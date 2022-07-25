@@ -1,4 +1,22 @@
 <script>
+    import Form from './lib/Form.svelte'
+    import Alert from './lib/Alert.svelte'
+
+    let result = ''
+
+    let copied = false
+
+    function onResult(event) {
+        result = event.detail
+    }
+
+    function copy() {
+        navigator.clipboard.writeText(result).then(() => toggleCopied())
+    }
+
+    function toggleCopied() {
+        copied = !copied
+    }
 </script>
 
 <main class="bg-gray-200 min-h-screen w-full flex flex-col justify-around">
@@ -71,13 +89,12 @@
             </div>
         </div>
         <div class="relative px-4 sm:px-6 lg:px-8">
-            <div class="text-lg max-w-prose mx-auto space-y-4">
+            <div class="text-lg max-w-prose mx-auto space-y-2">
                 <div class="flex justify-between space-x-4">
                     <h1 class="block">
                         <span class="block text-base text-yellow-400 font-semibold tracking-wide uppercase">Online</span
                         >
-                        <span
-                            class="mt-2 block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+                        <span class="block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
                             >Barcode Generator</span
                         >
                     </h1>
@@ -102,66 +119,54 @@
                         </svg>
                     </a>
                 </div>
-
                 <p class="mt-6 text-xl text-gray-500 leading-8">
-                    Online barcode generator using url using <a href="https://github.com/lindell/JsBarcode#readme"
-                        >JsBarcode</a
+                    Online barcode generator using url using <a
+                        href="https://github.com/lindell/JsBarcode#readme"
+                        class="cursor-pointer underline text-blue-800 font-bold">JsBarcode</a
                     >.
                 </p>
 
                 <i class="text-xs md:text-sm"> https://barcode.lazehang.com/generate/:value </i>
-
-                <div class="flex flex-col items-center space-y-4 w-full mx-auto mt-16">
-                    <form
-                        id="generate-form"
-                        class="w-full flex flex-col md:flex-row space-y-2 items-center md:items-end md:space-x-2 md:space-y-0"
-                    >
-                        <div class="w-full">
-                            <label for="generate-form" class="block text-sm font-semibold text-gray-700 pl-1">Barcode value</label>
-                            <div class="mt-1 w-full">
-                                <input
-                                    type="text"
-                                    name="barcodeValue"
-                                    class="font-thin px-3 py-2 md:py-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                    placeholder="code"
-                                />
-                            </div>
-                        </div>
-                        <button
-                            type="submit"
-                            class="tracking-wide w-full md:w-auto items-center px-6 py-3 border-2 border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-black hover:bg-yellow-400 hover:text-black focus:outline-none"
-                            >GENERATE</button
-                        >
-                    </form>
-                    <div class="clipboard flex justify-between space-x-2 items-center w-full">
-                        <input
-                            id="result-url"
-                            type="text"
-                            class="block px-3 py-2 shadow-sm w-full sm:text-sm border-gray-300 rounded-md"
-                        />
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            id="copythis"
-                            class="h-6 w-6 cursor-pointer block"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                <div class="flex flex-col items-center space-y-4 w-full mx-auto mt-16 max-w-full">
+                    <Form on:result={onResult} />
+                    {#if result}
+                        <div class="clipboard flex justify-between space-x-2 items-center w-full">
+                            <input
+                                id="result-url"
+                                type="text"
+                                class="block px-3 py-2 shadow-sm w-full sm:text-sm border-gray-300 rounded-md"
+                                bind:value={result}
+                                disabled
                             />
-                        </svg>
-                    </div>
-                    <div id="result" class="flex justify-center w-full" />
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                id="copythis"
+                                class="h-6 w-6 cursor-pointer block"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                on:click={copy}
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                                />
+                            </svg>
+                        </div>
+                        <div id="result" class="flex justify-center w-full">
+                            <img src={result} class="w-full" alt="generated barcode" />
+                        </div>
+                    {/if}
                 </div>
             </div>
         </div>
     </div>
-
     <footer class="text-center p-5 text-sm mt-auto">
         built by <a class="text-bold italic underline" href="https://www.lazehang.com">lazehang</a>
     </footer>
 </main>
+{#if copied}
+    <Alert message="Copied Successfully!" on:close={toggleCopied} />
+{/if}
