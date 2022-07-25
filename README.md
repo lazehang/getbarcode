@@ -1,4 +1,4 @@
-# getbarcode
+# getbarcode [WIP]
 [JsBarcode](https://github.com/lindell/JsBarcode#readme) online generator.
 
 [Demo](https://barcode.lazehang.com)
