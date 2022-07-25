@@ -3,7 +3,6 @@ import cors from 'cors';
 import { create } from 'express-handlebars';
 import barcodeRoutes from './routes/barcodeRoutes';
 import helmet from 'helmet';
-import path from 'path';
 
 const PORT = process.env.PORT || 4001;
 
