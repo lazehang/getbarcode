@@ -30,7 +30,7 @@ app.use(express.static('public'));
 
 app.use(cors());
 
-app.use('/api', barcodeRoutes());
+app.use('/', barcodeRoutes());
 
 app.listen(PORT, () => {
   console.info(`Server listening on ${PORT}`);
