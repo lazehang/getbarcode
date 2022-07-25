@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte'
 
-    const API_URL = 'https://barcode.lazehang.com/api/generate'
+    const API_URL = 'https://barcode.lazehang.com/generate'
 
     let form = {
         code: '',

@@ -7,16 +7,10 @@ import path from 'path';
 export default function barcodeRoutes() {
   let router = express.Router();
 
-  router.get('/', get);
-
   router.get('/generate/:code', generate);
 
   return router;
 }
-
-const get = (req: express.Request, res: express.Response) => {
-  return res.render('index');
-};
 
 const generate = async (req: express.Request, res: express.Response) => {
   try {

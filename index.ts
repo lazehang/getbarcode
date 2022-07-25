@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import { create } from 'express-handlebars';
 import barcodeRoutes from './routes/barcodeRoutes';
 import helmet from 'helmet';
 
@@ -15,16 +14,6 @@ app.use(
     },
   })
 );
-
-const hbs = create({
-  partialsDir: 'partials',
-});
-
-app.set('view engine', 'handlebars');
-
-app.engine('handlebars', hbs.engine);
-
-app.set('views', './templates');
 
 app.use(express.static('public'));
 
