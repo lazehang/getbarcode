@@ -1,6 +1,7 @@
 import JsBarcode from 'jsbarcode';
 import fs from 'fs';
 import { DOMImplementation, XMLSerializer } from 'xmldom';
+import path from 'path';
 
 export default {
   handle(value: string, options?: JsBarcode.Options, fileName: string = '') {
@@ -26,8 +27,8 @@ export default {
 
     const svgText = xmlSerializer.serializeToString(svgNode);
 
-    const root = __dirname + '/../../public/';
-    const filename = 'svgs/' + fileName + '.svg';
+    const root = path.resolve(__dirname, '../public');
+    const filename = '/svgs/' + fileName + '.svg';
 
     fs.writeFileSync(root + filename, svgText);
 

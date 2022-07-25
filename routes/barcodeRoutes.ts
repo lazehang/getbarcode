@@ -3,7 +3,7 @@ import barcode, { optionKeys } from '../services/barcode';
 import client from '../services/cache';
 import { pick } from '../utils/helpers';
 import config from '../config';
-
+import path from 'path';
 export default function barcodeRoutes() {
   let router = express.Router();
 
@@ -30,10 +30,10 @@ const generate = async (req: express.Request, res: express.Response) => {
 
     const fileName = await useCache(cacheKey, () => {
       return barcode.handle(req.params.code, req.query, cacheKey);
-    })
-  
+    });
+
     res.sendFile(fileName, {
-      root: __dirname + '/../../public',
+      root: path.resolve(__dirname, '../public'),
     });
   } catch (err) {
     console.log(err);
@@ -43,20 +43,20 @@ const generate = async (req: express.Request, res: express.Response) => {
 
 const useCache = async (cacheKey: string, callback: Function = () => {}) => {
   try {
-    if (!config.cacheEnabled) return callback()
-  
+    if (!config.cacheEnabled) return callback();
+
     const cache = await client();
-  
+
     const cachedData = await cache.get(cacheKey);
-  
-    if (cachedData) return cachedData
-  
-    const data = callback()
-  
+
+    if (cachedData) return cachedData;
+
+    const data = callback();
+
     await cache.set(cacheKey, data);
-  
-    return data
-  } catch(e) {
+
+    return data;
+  } catch (e) {
     return callback();
   }
-}
+};
