@@ -33,7 +33,7 @@ const generate = async (req: express.Request, res: express.Response) => {
     });
 
     res.sendFile(fileName, {
-      root: path.resolve(__dirname, '../public'),
+      root: path.resolve('./', 'public'),
     });
   } catch (err) {
     console.log(err);

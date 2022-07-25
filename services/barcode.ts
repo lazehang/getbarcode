@@ -27,7 +27,7 @@ export default {
 
     const svgText = xmlSerializer.serializeToString(svgNode);
 
-    const root = path.resolve(__dirname, '../public');
+    const root = path.resolve('./', 'public');
     const filename = '/svgs/' + fileName + '.svg';
 
     fs.writeFileSync(root + filename, svgText);
