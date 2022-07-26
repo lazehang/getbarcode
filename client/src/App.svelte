@@ -19,7 +19,7 @@
     }
 </script>
 
-<main class="bg-gray-200 min-h-screen w-full flex flex-col justify-around">
+<main class="bg-gray-100 min-h-screen w-full flex flex-col justify-around">
     <div class="relative py-10 overflow-hidden h-full">
         <div class="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
             <div class="relative h-full text-lg max-w-prose mx-auto" aria-hidden="true">
@@ -91,11 +91,121 @@
         <div class="relative px-4 sm:px-6 lg:px-8">
             <div class="text-lg max-w-prose mx-auto space-y-2">
                 <div class="flex justify-between space-x-4">
-                    <h1 class="block">
-                        <span class="block text-base text-yellow-400 font-semibold tracking-wide uppercase">Online</span
-                        >
-                        <span class="block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-                            >Barcode Generator</span
+                    <h1 class="-ml-2 -mt-2 block">
+                        <svg
+                            width="210px"
+                            height="62px"
+                            x="0px"
+                            y="0px"
+                            viewBox="0 0 310 72"
+                            xmlns="http://www.w3.org/2000/svg"
+                            version="1.1"
+                            style="transform: translate(0,0)"
+                            ><g transform="translate(10, 10)" style="fill:#000000;"
+                                ><rect x="0" y="0" width="4" height="30" /><rect
+                                    x="6"
+                                    y="0"
+                                    width="2"
+                                    height="30"
+                                /><rect x="12" y="0" width="2" height="30" /><rect
+                                    x="22"
+                                    y="0"
+                                    width="2"
+                                    height="30"
+                                /><rect x="28" y="0" width="4" height="30" /><rect
+                                    x="34"
+                                    y="0"
+                                    width="2"
+                                    height="30"
+                                /><rect x="44" y="0" width="2" height="30" /><rect
+                                    x="48"
+                                    y="0"
+                                    width="4"
+                                    height="30"
+                                /><rect x="56" y="0" width="2" height="30" /><rect
+                                    x="66"
+                                    y="0"
+                                    width="2"
+                                    height="30"
+                                /><rect x="72" y="0" width="8" height="30" /><rect
+                                    x="82"
+                                    y="0"
+                                    width="2"
+                                    height="30"
+                                /><rect x="88" y="0" width="2" height="30" /><rect
+                                    x="94"
+                                    y="0"
+                                    width="2"
+                                    height="30"
+                                /><rect x="104" y="0" width="4" height="30" /><rect
+                                    x="110"
+                                    y="0"
+                                    width="2"
+                                    height="30"
+                                /><rect x="116" y="0" width="2" height="30" /><rect
+                                    x="120"
+                                    y="0"
+                                    width="4"
+                                    height="30"
+                                /><rect x="132" y="0" width="2" height="30" /><rect
+                                    x="138"
+                                    y="0"
+                                    width="2"
+                                    height="30"
+                                /><rect x="144" y="0" width="8" height="30" /><rect
+                                    x="154"
+                                    y="0"
+                                    width="2"
+                                    height="30"
+                                /><rect x="164" y="0" width="2" height="30" /><rect
+                                    x="168"
+                                    y="0"
+                                    width="4"
+                                    height="30"
+                                /><rect x="176" y="0" width="2" height="30" /><rect
+                                    x="184"
+                                    y="0"
+                                    width="8"
+                                    height="30"
+                                /><rect x="194" y="0" width="2" height="30" /><rect
+                                    x="198"
+                                    y="0"
+                                    width="2"
+                                    height="30"
+                                /><rect x="208" y="0" width="2" height="30" /><rect
+                                    x="214"
+                                    y="0"
+                                    width="4"
+                                    height="30"
+                                /><rect x="220" y="0" width="2" height="30" /><rect
+                                    x="224"
+                                    y="0"
+                                    width="4"
+                                    height="30"
+                                /><rect x="232" y="0" width="2" height="30" /><rect
+                                    x="242"
+                                    y="0"
+                                    width="4"
+                                    height="30"
+                                /><rect x="252" y="0" width="4" height="30" /><rect
+                                    x="258"
+                                    y="0"
+                                    width="4"
+                                    height="30"
+                                /><rect x="264" y="0" width="4" height="30" /><rect
+                                    x="274"
+                                    y="0"
+                                    width="6"
+                                    height="30"
+                                /><rect x="282" y="0" width="2" height="30" /><rect
+                                    x="286"
+                                    y="0"
+                                    width="4"
+                                    height="30"
+                                /><text style="font: 20px monospace" text-anchor="middle" x="145" y="52"
+                                    >Online Barcode Generator</text
+                                ></g
+                            ></svg
                         >
                     </h1>
                     <a href="https://github.com/lazehang/getbarcode" class="block cursor-pointer">
